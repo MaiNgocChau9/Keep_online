@@ -16,7 +16,14 @@ Chúng em sử dụng model **Gemini 1.5 Flash** của Google, với khả năng
 
 **5. Dễ dàng tiếp cận:**  
 - ChatGPT yêu cầu đăng nhập để sử dụng model cao cấp GPT-4o. Nếu không, người dùng sẽ bị giới hạn ở GPT-4o-mini.  
-- Ngược lại, chatbot của chúng em **không yêu cầu đăng nhập** và dễ dàng tiếp cận, phù hợp với mọi người dùng.  
+- Ngược lại, chatbot của chúng em **không yêu cầu đăng nhập** và dễ dàng tiếp cận, phù hợp với mọi người dùng.
+
+**2. Cách tiếp cận khác biệt:**
+- ChatGPT chỉ đưa ra câu trả lời tĩnh theo câu hỏi của người dùng.
+- Chatbot của chúng em thì linh hoạt hơn, với khả năng:
+  - Gợi ý trò chơi phù hợp theo độ tuổi, hoàn cảnh, hoặc nhóm người chơi.
+  - Hướng dẫn chi tiết cách tổ chức trò chơi, cách chuẩn bị dụng cụ.
+  - Lồng ghép yếu tố văn hóa và lịch sử của trò chơi, giúp người dùng không chỉ chơi mà còn hiểu rõ giá trị truyền thống.
 
 **Kết luận:**  
 Sản phẩm AI của chúng em không chỉ giải quyết các **hạn chế** của ChatGPT mà còn **tối ưu hóa trải nghiệm người dùng** trong lĩnh vực trò chơi dân gian. Đây là lý do tại sao chúng em tin rằng sản phẩm này **cần thiết và có tiềm năng ứng dụng thực tế cao.** 🚀  
