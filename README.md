@@ -6,12 +6,12 @@ Bài tuyên truyền: https://docs.google.com/document/d/15CIlSen5XKwtGT46kkUcrh
 ```
 #!/bin/bash
 
-# Script tự động cài đặt driver cho Arch Linux trong GNOME Boxes
-# Chạy với quyền user thường, script sẽ tự động sudo khi cần
+# Script tự động cài đặt driver auto-scaling cho Arch Linux trong GNOME Boxes
+# Chỉ tập trung vào display scaling và spice guest agent
 
 set -e  # Thoát nếu có lỗi
 
-echo "=== SCRIPT TỰ ĐỘNG CÀI ĐẶT DRIVER CHO ARCH LINUX TRONG BOXES ==="
+echo "=== SCRIPT AUTO-SCALING CHO ARCH LINUX TRONG BOXES ==="
 echo ""
 
 # Màu sắc cho output
@@ -50,12 +50,12 @@ print_status "Cập nhật hệ thống..."
 sudo pacman -Syu --noconfirm
 print_success "Cập nhật hệ thống hoàn tất"
 
-# Cài đặt driver GPU cơ bản
-print_status "Cài đặt driver GPU..."
-sudo pacman -S --noconfirm xf86-video-qxl xf86-video-intel mesa
-print_success "Driver GPU đã được cài đặt"
+# Cài đặt driver QXL cho auto-scaling
+print_status "Cài đặt driver QXL..."
+sudo pacman -S --noconfirm xf86-video-qxl mesa
+print_success "Driver QXL đã được cài đặt"
 
-# Cài đặt Spice guest agent (quan trọng cho Boxes)
+# Cài đặt Spice guest agent (quan trọng nhất cho auto-scaling)
 print_status "Cài đặt Spice guest agent..."
 sudo pacman -S --noconfirm spice-vdagent
 print_success "Spice guest agent đã được cài đặt"
@@ -66,85 +66,43 @@ sudo systemctl enable spice-vdagentd
 sudo systemctl start spice-vdagentd
 print_success "Dịch vụ Spice đã được kích hoạt"
 
-# Cài đặt driver âm thanh
-print_status "Cài đặt driver âm thanh..."
-sudo pacman -S --noconfirm alsa-utils pulseaudio pulseaudio-alsa pavucontrol
-print_success "Driver âm thanh đã được cài đặt"
+# Cài đặt xorg-xrandr cho resolution scaling
+print_status "Cài đặt xorg-xrandr..."
+sudo pacman -S --noconfirm xorg-xrandr
+print_success "xorg-xrandr đã được cài đặt"
 
-# Cài đặt NetworkManager
-print_status "Cài đặt NetworkManager..."
-sudo pacman -S --noconfirm networkmanager
-sudo systemctl enable NetworkManager
-print_success "NetworkManager đã được cài đặt và kích hoạt"
-
-# Cài đặt các gói hỗ trợ khác
-print_status "Cài đặt các gói hỗ trợ..."
-sudo pacman -S --noconfirm \
-    xorg-xrandr \
-    xorg-setxkbmap \
-    xclip \
-    curl \
-    wget \
-    git \
-    vim \
-    nano \
-    htop \
-    neofetch
-print_success "Các gói hỗ trợ đã được cài đặt"
-
-# Hỏi người dùng có muốn cài desktop environment không
-echo ""
-print_status "Bạn có muốn cài đặt desktop environment không?"
-echo "1) GNOME (khuyến nghị)"
-echo "2) KDE Plasma"
-echo "3) XFCE (nhẹ)"
-echo "4) Bỏ qua"
-echo ""
-read -p "Lựa chọn của bạn (1-4): " desktop_choice
-
-case $desktop_choice in
-    1)
-        print_status "Cài đặt GNOME Desktop..."
-        sudo pacman -S --noconfirm gnome gnome-extra
-        sudo systemctl enable gdm
-        print_success "GNOME Desktop đã được cài đặt"
-        ;;
-    2)
-        print_status "Cài đặt KDE Plasma Desktop..."
-        sudo pacman -S --noconfirm plasma kde-applications
-        sudo systemctl enable sddm
-        print_success "KDE Plasma Desktop đã được cài đặt"
-        ;;
-    3)
-        print_status "Cài đặt XFCE Desktop..."
-        sudo pacman -S --noconfirm xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
-        sudo systemctl enable lightdm
-        print_success "XFCE Desktop đã được cài đặt"
-        ;;
-    4)
-        print_warning "Bỏ qua cài đặt desktop environment"
-        ;;
-    *)
-        print_warning "Lựa chọn không hợp lệ, bỏ qua cài đặt desktop environment"
-        ;;
-esac
-
-# Tạo file cấu hình cho Spice
-print_status "Tạo file cấu hình tối ưu..."
+# Tạo file cấu hình QXL tối ưu cho auto-scaling
+print_status "Tạo file cấu hình auto-scaling..."
 sudo mkdir -p /etc/X11/xorg.conf.d/
-sudo tee /etc/X11/xorg.conf.d/20-spice.conf > /dev/null <<EOF
+sudo tee /etc/X11/xorg.conf.d/20-qxl.conf > /dev/null <<EOF
 Section "Device"
     Identifier "qxl"
     Driver "qxl"
     Option "ENABLE_SURFACES" "False"
 EndSection
-EOF
-print_success "File cấu hình đã được tạo"
 
-# Thêm user vào các group cần thiết
-print_status "Thêm user vào các group cần thiết..."
-sudo usermod -aG audio,video,input,storage $USER
-print_success "User đã được thêm vào các group"
+Section "Monitor"
+    Identifier "Virtual-1"
+    Option "PreferredMode" "1024x768"
+EndSection
+
+Section "Screen"
+    Identifier "Screen0"
+    Device "qxl"
+    Monitor "Virtual-1"
+    DefaultDepth 24
+    SubSection "Display"
+        Depth 24
+        Modes "1920x1080" "1680x1050" "1280x1024" "1280x960" "1024x768" "800x600"
+    EndSubSection
+EndSection
+EOF
+print_success "File cấu hình auto-scaling đã được tạo"
+
+# Thêm user vào group video
+print_status "Thêm user vào group video..."
+sudo usermod -aG video $USER
+print_success "User đã được thêm vào group video"
 
 # Tạo script khởi động tự động cho spice-vdagent
 print_status "Tạo script khởi động tự động..."
@@ -163,16 +121,14 @@ echo ""
 print_success "=== CÀI ĐẶT HOÀN TẤT ==="
 echo ""
 print_status "Các tính năng đã được cài đặt:"
-echo "  ✓ Driver GPU (QXL)"
+echo "  ✓ Driver QXL (auto-scaling)"
 echo "  ✓ Spice guest agent"
-echo "  ✓ Driver âm thanh"
-echo "  ✓ NetworkManager"
-echo "  ✓ Các gói hỗ trợ cơ bản"
-if [ "$desktop_choice" != "4" ]; then
-    echo "  ✓ Desktop environment"
-fi
+echo "  ✓ xorg-xrandr"
+echo "  ✓ Cấu hình auto-scaling"
 echo ""
 print_warning "Cần khởi động lại để áp dụng tất cả thay đổi"
+echo ""
+print_status "Sau khi khởi động lại, màn hình sẽ tự động scale theo cửa sổ Boxes"
 echo ""
 read -p "Bạn có muốn khởi động lại ngay bây giờ không? (y/N): " reboot_choice
 if [[ $reboot_choice =~ ^[Yy]$ ]]; then
@@ -184,5 +140,5 @@ else
 fi
 
 echo ""
-print_success "Script hoàn tất! Chúc bạn sử dụng Arch Linux vui vẻ!"
+print_success "Script hoàn tất! Màn hình sẽ tự động scale sau khi reboot!"
 ```
