@@ -1,5 +1,6 @@
 # Keep_online
 
+https://www.notion.so/maingocchau/H-ng-d-n-c-i-t-Fcitx5-tr-n-Linux-2132ce9c2cd08084b1e3e053d12dce4b?source=copy_link
 KẾT QUẢ SƯU TẦM: https://docs.google.com/document/d/1sBzt83F2AkpmU2RQe1IxXHHWAtD-2FhwyKokEN9wuu4/edit?usp=sharing
 BÁO CÁO VỀ TÌNH HÌNH THIÊN TAI: https://docs.google.com/document/d/1RG-L6HT8Pr_6X6SFSLxQN83EWqddIPeuPCPlI9Bb7W8/edit?usp=sharing
 Bài tuyên truyền: https://docs.google.com/document/d/15CIlSen5XKwtGT46kkUcrh5OrX9jx3oNbWqOUqU9MIw/edit?usp=sharing
