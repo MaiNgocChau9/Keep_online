@@ -1,0 +1,1137 @@
+<!DOCTYPE html>                                                                                     
+<html lang="en">                                                                                    
+<head>                                                                                              
+    <meta charset="UTF-8">                                                                          
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">                          
+    <title>Aroma Coffee – Premium Coffee Experience</title>                                         
+                                                                                                    
+    <!-- Google Fonts -->                                                                           
+    <link rel="preconnect" href="https://fonts.googleapis.com">                                     
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>                            
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">                                                               
+                                                                                                    
+    <!-- Tailwind CSS -->                                                                           
+    <script src="https://cdn.tailwindcss.com"></script>                                             
+                                                                                                    
+    <!-- Font Awesome -->                                                                           
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">                   
+                                                                                                    
+    <!-- Swiper -->                                                                                 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">     
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>             
+                                                                                                    
+    <!-- Lenis (smooth scrolling) -->                                                               
+    <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>                        
+                                                                                                    
+    <!-- GSAP + ScrollTrigger -->                                                                   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>          
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script> 
+                                                                                                    
+    <style>                                                                                         
+        /* Custom styles for premium feel */                                                        
+        :root {                                                                                     
+            --coffee-dark: #3E2723;                                                                 
+            --coffee-medium: #6D4C41;                                                               
+            --coffee-light: #8D6E63;                                                                
+            --cream: #FFF8E7;                                                                       
+            --gold: #C9A96E;                                                                        
+            --gold-light: #E8D5B7;                                                                  
+            --espresso: #4E342E;                                                                    
+        }                                                                                           
+                                                                                                    
+        * {                                                                                         
+            margin: 0;                                                                              
+            padding: 0;                                                                             
+            box-sizing: border-box;                                                                 
+        }                                                                                           
+                                                                                                    
+        body {                                                                                      
+            font-family: 'Lato', sans-serif;                                                        
+            background-color: var(--cream);                                                         
+            color: var(--coffee-dark);                                                              
+            scroll-behavior: smooth;                                                                
+        }                                                                                           
+                                                                                                    
+        h1, h2, h3, h4 {                                                                            
+            font-family: 'Playfair Display', serif;                                                 
+            font-weight: 700;                                                                       
+        }                                                                                           
+                                                                                                    
+        .gold-text {                                                                                
+            color: var(--gold);                                                                     
+        }                                                                                           
+                                                                                                    
+        .btn-primary {                                                                              
+            background-color: var(--gold);                                                          
+            color: #fff;                                                                            
+            padding: 0.75rem 2rem;                                                                  
+            border-radius: 9999px;                                                                  
+            font-weight: 700;                                                                       
+            transition: all 0.3s ease;                                                              
+            border: none;                                                                           
+            cursor: pointer;                                                                        
+        }                                                                                           
+                                                                                                    
+        .btn-primary:hover {                                                                        
+            background-color: #b8944a;                                                              
+            transform: translateY(-2px);                                                            
+            box-shadow: 0 8px 20px rgba(201, 169, 110, 0.4);                                        
+        }                                                                                           
+                                                                                                    
+        .btn-outline {                                                                              
+            background: transparent;                                                                
+            border: 2px solid var(--gold);                                                          
+            color: var(--gold);                                                                     
+            padding: 0.75rem 2rem;                                                                  
+            border-radius: 9999px;                                                                  
+            font-weight: 700;                                                                       
+            transition: all 0.3s ease;                                                              
+            cursor: pointer;                                                                        
+        }                                                                                           
+                                                                                                    
+        .btn-outline:hover {                                                                        
+            background: var(--gold);                                                                
+            color: #fff;                                                                            
+        }                                                                                           
+                                                                                                    
+        .section-title {                                                                            
+            font-size: 2.5rem;                                                                      
+            margin-bottom: 1rem;                                                                    
+            position: relative;                                                                     
+            display: inline-block;                                                                  
+        }                                                                                           
+                                                                                                    
+        .section-title::after {                                                                     
+            content: '';                                                                            
+            position: absolute;                                                                     
+            bottom: -8px;                                                                           
+            left: 0;                                                                                
+            width: 60px;                                                                            
+            height: 4px;                                                                            
+            background: var(--gold);                                                                
+        }                                                                                           
+                                                                                                    
+        .card-hover {                                                                               
+            transition: transform 0.3s ease, box-shadow 0.3s ease;                                  
+        }                                                                                           
+                                                                                                    
+        .card-hover:hover {                                                                         
+            transform: translateY(-8px);                                                            
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);                                               
+        }                                                                                           
+                                                                                                    
+        .testimonial-card {                                                                         
+            background: #fff;                                                                       
+            border-radius: 1rem;                                                                    
+            padding: 2rem;                                                                          
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);                                                
+        }                                                                                           
+                                                                                                    
+        .testimonial-card .avatar {                                                                 
+            width: 60px;                                                                            
+            height: 60px;                                                                           
+            border-radius: 50%;                                                                     
+            object-fit: cover;                                                                      
+        }                                                                                           
+                                                                                                    
+        .form-input {                                                                               
+            border: 2px solid #ddd;                                                                 
+            border-radius: 0.5rem;                                                                  
+            padding: 0.75rem 1rem;                                                                  
+            width: 100%;                                                                            
+            transition: border-color 0.3s;                                                          
+        }                                                                                           
+                                                                                                    
+        .form-input:focus {                                                                         
+            outline: none;                                                                          
+            border-color: var(--gold);                                                              
+        }                                                                                           
+                                                                                                    
+        .map-placeholder {                                                                          
+            background: #e0d5c8;                                                                    
+            height: 300px;                                                                          
+            display: flex;                                                                          
+            align-items: center;                                                                    
+            justify-content: center;                                                                
+            color: #8d6e63;                                                                         
+            font-size: 1.2rem;                                                                      
+            border-radius: 1rem;                                                                    
+        }                                                                                           
+                                                                                                    
+        .hero-overlay {                                                                             
+            background: linear-gradient(135deg, rgba(62, 39, 35, 0.7) 0%, rgba(62, 39, 35, 0.4) 100%);                                                                                       
+        }                                                                                           
+                                                                                                    
+        .featured-card {                                                                            
+            background: #fff;                                                                       
+            border-radius: 1.5rem;                                                                  
+            overflow: hidden;                                                                       
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);                                                
+        }                                                                                           
+                                                                                                    
+        .featured-card img {                                                                        
+            width: 100%;                                                                            
+            height: 200px;                                                                          
+            object-fit: cover;                                                                      
+        }                                                                                           
+                                                                                                    
+        .featured-card .card-body {                                                                 
+            padding: 1.5rem;                                                                        
+        }                                                                                           
+                                                                                                    
+        .featured-card .card-body h3 {                                                              
+            font-size: 1.5rem;                                                                      
+        }                                                                                           
+                                                                                                    
+        .featured-card .card-body .price {                                                          
+            font-weight: 700;                                                                       
+            color: var(--gold);                                                                     
+        }                                                                                           
+                                                                                                    
+        .menu-tab {                                                                                 
+            cursor: pointer;                                                                        
+            padding: 0.75rem 1.5rem;                                                                
+            border-radius: 9999px;                                                                  
+            font-weight: 600;                                                                       
+            transition: all 0.3s;                                                                   
+            background: transparent;                                                                
+            color: var(--coffee-medium);                                                            
+        }                                                                                           
+                                                                                                    
+        .menu-tab.active {                                                                          
+            background: var(--gold);                                                                
+            color: #fff;                                                                            
+        }                                                                                           
+                                                                                                    
+        .menu-tab:hover {                                                                           
+            background: var(--gold-light);                                                          
+        }                                                                                           
+                                                                                                    
+        .menu-item {                                                                                
+            display: none;                                                                          
+        }                                                                                           
+                                                                                                    
+        .menu-item.active {                                                                         
+            display: block;                                                                         
+        }                                                                                           
+                                                                                                    
+        .gallery-item {                                                                             
+            position: relative;                                                                     
+            overflow: hidden;                                                                       
+            border-radius: 1rem;                                                                    
+        }                                                                                           
+                                                                                                    
+        .gallery-item img {                                                                         
+            width: 100%;                                                                            
+            height: 100%;                                                                           
+            object-fit: cover;                                                                      
+            transition: transform 0.5s ease;                                                        
+        }                                                                                           
+                                                                                                    
+        .gallery-item:hover img {                                                                   
+            transform: scale(1.1);                                                                  
+        }                                                                                           
+                                                                                                    
+        .gallery-item .overlay {                                                                    
+            position: absolute;                                                                     
+            bottom: 0;                                                                              
+            left: 0;                                                                                
+            right: 0;                                                                               
+            background: linear-gradient(transparent, rgba(0,0,0,0.6));                              
+            color: #fff;                                                                            
+            padding: 1.5rem;                                                                        
+            opacity: 0;                                                                             
+            transition: opacity 0.3s;                                                               
+        }                                                                                           
+                                                                                                    
+        .gallery-item:hover .overlay {                                                              
+            opacity: 1;                                                                             
+        }                                                                                           
+                                                                                                    
+        .brew-step {                                                                                
+            display: flex;                                                                          
+            align-items: center;                                                                    
+            gap: 1rem;                                                                              
+            padding: 1rem 0;                                                                        
+        }                                                                                           
+                                                                                                    
+        .brew-step .step-number {                                                                   
+            width: 40px;                                                                            
+            height: 40px;                                                                           
+            background: var(--gold);                                                                
+            color: #fff;                                                                            
+            border-radius: 50%;                                                                     
+            display: flex;                                                                          
+            align-items: center;                                                                    
+            justify-content: center;                                                                
+            font-weight: 700;                                                                       
+        }                                                                                           
+                                                                                                    
+        .brew-step .step-icon {                                                                     
+            font-size: 2rem;                                                                        
+            color: var(--gold);                                                                     
+        }                                                                                           
+                                                                                                    
+        .progress-bar {                                                                             
+            height: 4px;                                                                            
+            background: #e0d5c8;                                                                    
+            border-radius: 2px;                                                                     
+            overflow: hidden;                                                                       
+        }                                                                                           
+                                                                                                    
+        .progress-bar .fill {                                                                       
+            height: 100%;                                                                           
+            background: var(--gold);                                                                
+            width: 0%;                                                                              
+            transition: width 0.5s ease;                                                            
+        }                                                                                           
+                                                                                                    
+        /* Scrollbar styling */                                                                     
+        ::-webkit-scrollbar {                                                                       
+            width: 8px;                                                                             
+        }                                                                                           
+                                                                                                    
+        ::-webkit-scrollbar-track {                                                                 
+            background: var(--cream);                                                               
+        }                                                                                           
+                                                                                                    
+        ::-webkit-scrollbar-thumb {                                                                 
+            background: var(--gold);                                                                
+            border-radius: 4px;                                                                     
+        }                                                                                           
+                                                                                                    
+        
+                                                                                                    
+        /* Responsive adjustments */                                                                
+        @media (max-width: 768px) {                                                                 
+            .section-title {                                                                        
+                font-size: 2rem;                                                                    
+            }                                                                                       
+            .hero-title {                                                                           
+                font-size: 2.5rem !important;                                                       
+            }                                                                                       
+        }                                                                                           
+    </style>                                                                                        
+</head>                                                                                             
+<body>                                                                                              
+                                                                                                    
+    <!-- Loading Screen -->                                                                         
+    <div class="loader" id="loader">                                                                
+        <div class="coffee-bean"></div>                                                             
+    </div>                                                                                          
+                                                                                                    
+    <!-- Sticky Navigation -->                                                                      
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm"> 
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">                 
+            <a href="#" class="text-2xl font-bold gold-text">Aroma</a>                              
+            <div class="hidden md:flex space-x-8">                                                  
+                <a href="#about" class="nav-link text-gray-700 hover:text-gold transition">About</a>
+                <a href="#menu" class="nav-link text-gray-700 hover:text-gold transition">Menu</a>  
+                <a href="#gallery" class="nav-link text-gray-700 hover:text-gold transition">Gallery</a>                                                                             
+                <a href="#promotions" class="nav-link text-gray-700 hover:text-gold transition">Promotions</a>                                                                          
+                <a href="#testimonials" class="nav-link text-gray-700 hover:text-gold transition">Testimonials</a>                                                                        
+                <a href="#brewing" class="nav-link text-gray-700 hover:text-gold transition">Brewing</a>                                                                             
+                <a href="#contact" class="nav-link text-gray-700 hover:text-gold transition">Contact</a>                                                                             
+            </div>                                                                                  
+            <button class="md:hidden text-2xl" id="menu-toggle">                                    
+                <i class="fas fa-bars"></i>                                                         
+            </button>                                                                               
+        </div>                                                                                      
+        <!-- Mobile menu -->                                                                        
+        <div class="hidden md:hidden bg-white/95 backdrop-blur-md shadow-sm">                       
+            <div class="flex flex-col space-y-2 px-4 py-4">                                         
+                <a href="#about" class="nav-link text-gray-700 hover:text-gold transition py-2">About</a>                                                                                     
+                <a href="#menu" class="nav-link text-gray-700 hover:text-gold transition py-2">Menu</a>                                                                                      
+                <a href="#gallery" class="nav-link text-gray-700 hover:text-gold transition py-2">Gallery</a>                                                                                   
+                <a href="#promotions" class="nav-link text-gray-700 hover:text-gold transition py-2">Promotions</a>                                                                                
+                <a href="#testimonials" class="nav-link text-gray-700 hover:text-gold transition py-2">Testimonials</a>                                                                              
+                <a href="#brewing" class="nav-link text-gray-700 hover:text-gold transition py-2">Brewing</a>                                                                                   
+                <a href="#contact" class="nav-link text-gray-700 hover:text-gold transition py-2">Contact</a>                                                                                   
+            </div>                                                                                  
+        </div>                                                                                      
+    </nav>                                                                                          
+                                                                                                    
+    <!-- Hero Section -->                                                                           
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">                                                                                   
+        <div class="absolute inset-0">                                                              
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Premium coffee shop" class="w-full h-full object-cover">                        
+            <div class="hero-overlay absolute inset-0"></div>                                       
+        </div>                                                                                      
+        <div class="relative z-10 container mx-auto px-4 text-center text-white">                   
+            <h1 class="hero-title text-5xl md:text-7xl font-bold mb-4 leading-tight">               
+                Aroma Coffee                                                                        
+            </h1>                                                                                   
+            <p class="text-xl md:text-2xl mb-8 font-light">Where every cup tells a story</p>        
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">                            
+                <a href="#menu" class="btn-primary text-lg px-8 py-3">View Menu</a>                 
+                <a href="#reserve" class="btn-outline text-lg px-8 py-3">Reserve a Table</a>        
+            </div>                                                                                  
+        </div>                                                                                      
+    </section>                                                                                      
+                                                                                                    
+    <!-- About Section -->                                                                          
+    <section id="about" class="py-20 bg-white">                                                     
+        <div class="container mx-auto px-4">                                                        
+            <div class="grid md:grid-cols-2 gap-12 items-center">                                   
+                <div>                                                                               
+                    <h2 class="section-title">Our Story</h2>                                        
+                    <p class="text-lg leading-relaxed mb-4">Founded in 2015, Aroma Coffee has been crafting exceptional coffee experiences for over a decade. We source only the finest beans from ethical farms, roast in-house, and invite you to savor the art of coffee.</p>                       
+                    <p class="text-lg leading-relaxed mb-6">Our team is passionate about coffee, sustainability, and creating a warm, welcoming space where every visit feels like coming home.</p>  
+                    <a href="#menu" class="btn-primary">Explore Our Menu</a>                        
+                </div>                                                                              
+                <div class="relative">                                                              
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee shop interior" class="rounded-2xl shadow-xl w-full h-96 object-cover">       
+                </div>                                                                              
+            </div>                                                                                  
+        </div>                                                                                      
+    </section>                                                                                      
+                                                                                                    
+    <!-- Featured Drinks -->                                                                        
+    <section id="menu" class="py-20 bg-cream">                                                      
+        <div class="container mx-auto px-4">                                                        
+            <div class="text-center mb-12">                                                         
+                <h2 class="section-title">Featured Drinks</h2>                                      
+                <p class="text-gray-600">Handcrafted with love</p>                                  
+            </div>                                                                                  
+            <div class="grid md:grid-cols-3 gap-8">                                                 
+                <!-- Espresso -->                                                                   
+                <div class="featured-card card-hover">                                              
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Espresso">                                           
+                    <div class="card-body">                                                         
+                        <h3>Espresso</h3>                                                           
+                        <p class="text-gray-500 mb-2">Single origin, bold and rich</p>              
+                        <span class="price">$4.50</span>                                            
+                    </div>                                                                          
+                </div>                                                                              
+                <!-- Latte -->                                                                      
+                <div class="featured-card card-hover">                                              
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Latte">                                             
+                    <div class="card-body">                                                         
+                        <h3>Latte</h3>                                                              
+                        <p class="text-gray-500 mb-2">Cinnamon and vanilla swirl</p>                
+                        <span class="price">$5.00</span>                                            
+                    </div>                                                                          
+                </div>                                                                              
+                <!-- Cappuccino -->                                                                 
+                <div class="featured-card card-hover">                                              
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cappuccino">                                         
+                    <div class="card-body">                                                         
+                        <h3>Cappuccino</h3>                                                         
+                        <p class="text-gray-500 mb-2">Foamy and creamy</p>                          
+                        <span class="price">$5.50</span>                                            
+                    </div>                                                                          
+                </div>                                                                              
+            </div>                                                                                  
+        </div>                                                                                      
+    </section>                                                                                      
+                                                                                                    
+    <!-- Menu with Tabs -->                                                                         
+    <section id="menu" class="py-20 bg-white">                                                      
+        <div class="container mx-auto px-4">                                                        
+            <div class="text-center mb-12">                                                         
+                <h2 class="section-title">Our Menu</h2>                                             
+                <p class="text-gray-600">Choose your favorite</p>                                   
+            </div>                                                                                  
+            <div class="max-w-2xl mx-auto">                                                         
+                <!-- Tabs -->                                                                       
+                <div class="flex justify-center space-x-2 mb-8">                                    
+                    <button class="menu-tab active" data-category="coffee">Coffee</button>          
+                    <button class="menu-tab" data-category="tea">Tea</button>                       
+                    <button class="menu-tab" data-category="desserts">Desserts</button>             
+                    <button class="menu-tab" data-category="other">Other</button>                   
+                </div>                                                                              
+                <!-- Menu Items -->                                                                 
+                <div id="menu-items" class="space-y-4">                                             
+                    <!-- Coffee items -->                                                           
+                    <div class="menu-item active" data-category="coffee">                           
+                        <div class="grid md:grid-cols-2 gap-6">                                     
+                            <div class="featured-card card-hover">                                  
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Espresso">                                           
+                                <div class="card-body">                                             
+                                    <h3>Espresso</h3>                                               
+                                    <p class="text-gray-500 mb-2">$4.50</p>                         
+                                </div>                                                              
+                            </div>                                                                  
+                            <div class="featured-card card-hover">                                  
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Americano">                                          
+                                <div class="card-body">                                             
+                                    <h3>Americano</h3>                                              
+                                    <p class="text-gray-500 mb-2">$5.00</p>                         
+                                </div>                                                              
+                            </div>                                                                  
+                            <div class="featured-card card-hover">                                  
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cappuccino">                                         
+                                <div class="card-body">                                             
+                                    <h3>Cappuccino</h3>                                             
+                                    <p class="text-gray-500 mb-2">$5.50</p>                         
+                                </div>                                                              
+                            </div>                                                                  
+                            <div class="featured-card card-hover">                                  
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Latte">                                             
+                                <div class="card-body">                                             
+                                    <h3>Latte</h3>                                                  
+                                    <p class="text-gray-500 mb-2">$5.00</p>                         
+                                </div>                                                              
+                            </div>                                                                  
+                        </div>                                                                      
+                    </div>                                                                          
+                    <!-- Tea items -->                                                              
+                    <div class="menu-item" data-category="tea">                                     
+                        <div class="grid md:grid-cols-2 gap-6">                                     
+                            <div class="featured-card card-hover">                                  
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Earl Grey">                                          
+                                <div class="card-body">                                             
+                                    <h3>Earl Grey</h3>                                              
+                                    <p class="text-gray-500 mb-2">$5.00</p>                         
+                                </div>                                                              
+                            </div>                                                                  
+                            <div class="featured-card card-hover">                                  
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chai">                                               
+                                <div class="card-body">                                             
+                                    <h3>Chai Latte</h3>                                             
+                                    <p class="text-gray-500 mb-2">$5.50</p>                         
+                                </div>                                                              
+                            </div>                                                                  
+                        </div>                                                                      
+                    </div>                                                                          
+                    <!-- Desserts -->                                                               
+                    <div class="menu-item" data-category="desserts">                                
+                        <div class="grid md:grid-cols-2 gap-6">                                     
+                            <div class="featured-card card-hover">                                  
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tiramisu">                                           
+                                <div class="card-body">                                             
+                                    <h3>Tiramisu</h3>                                               
+                                    <p class="text-gray-500 mb-2">$6.50</p>                         
+                                </div>                                                              
+                            </div>                                                                  
+                            <div class="featured-card card-hover">                                  
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chocolate Cake">                                     
+                                <div class="card-body">                                             
+                                    <h3>Chocolate Cake</h3>                                         
+                                    <p class="text-gray-500 mb-2">$7.00</p>                         
+                                </div>                                                              
+                            </div>                                                                  
+                        </div>                                                                      
+                    </div>                                                                          
+                    <!-- Other -->                                                                  
+                    <div class="menu-item" data-category="other">                                   
+                        <div class="grid md:grid-cols-2 gap-6">                                     
+                            <div class="featured-card card-hover">                                  
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Croissant">                                          
+                                <div class="card-body">                                             
+                                    <h3>Croissant</h3>                                              
+                                    <p class="text-gray-500 mb-2">$4.00</p>                         
+                                </div>                                                              
+                            </div>                                                                  
+                            <div class="featured-card card-hover">                                  
+                                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Muffin">                                             
+                                <div class="card-body">                                             
+                                    <h3>Blueberry Muffin</h3>                                       
+                                    <p class="text-gray-500 mb-2">$4.50</p>                         
+                                </div>                                                              
+                            </div>                                                                  
+                        </div>                                                                      
+                    </div>                                                                          
+                </div>                                                                              
+            </div>                                                                                  
+        </div>                                                                                      
+    </section>                                                                                      
+                                                                                                    
+    <!-- Interactive Gallery -->                                                                    
+    <section id="gallery" class="py-20 bg-cream">                                                   
+        <div class="container mx-auto px-4">                                                        
+            <div class="text-center mb-12">                                                         
+                <h2 class="section-title">Our Gallery</h2>                                          
+                <p class="text-gray-600">A glimpse into our space</p>                               
+            </div>                                                                                  
+            <div class="grid md:grid-cols-3 gap-6">                                                 
+                <div class="gallery-item h-64">                                                     
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee art">                                         
+                    <div class="overlay">Artistic latte</div>                                       
+                </div>                                                                              
+                <div class="gallery-item h-64">                                                     
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee shop">                                        
+                    <div class="overlay">Cozy corner</div>                                          
+                </div>                                                                              
+                <div class="gallery-item h-64">                                                     
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Espresso machine">                                   
+                    <div class="overlay">Espresso bar</div>                                         
+                </div>                                                                              
+                <div class="gallery-item h-64">                                                     
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee beans">                                       
+                    <div class="overlay">Freshly roasted</div>                                      
+                </div>                                                                              
+                <div class="gallery-item h-64">                                                     
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Patio seating">                                      
+                    <div class="overlay">Outdoor seating</div>                                      
+                </div>                                                                              
+                <div class="gallery-item h-64">                                                     
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Barista making coffee">                                                             
+                    <div class="overlay">Barista at work</div>                                      
+                </div>                                                                              
+            </div>                                                                                  
+        </div>                                                                                      
+    </section>                                                                                      
+                                                                                                    
+    <!-- Promotions Carousel -->                                                                    
+    <section id="promotions" class="py-20 bg-white">                                                
+        <div class="container mx-auto px-4">                                                        
+            <div class="text-center mb-12">                                                         
+                <h2 class="section-title">Current Promotions</h2>                                   
+                <p class="text-gray-600">Special offers</p>                                         
+            </div>                                                                                  
+            <div class="max-w-4xl mx-auto">                                                         
+                <div class="swiper mySwiper">                                                       
+                    <div class="swiper-wrapper">                                                    
+                        <div class="swiper-slide bg-gradient-to-br from-amber-100 to-amber-50 rounded-2xl p-8 text-center">                                                                       
+                            <h3 class="text-2xl font-bold text-amber-800 mb-2">Spring Coffee Special</h3>                                                                                        
+                            <p class="text-gray-600 mb-4">Buy 2, get 1 free on all lattes this week</p>                                                                                            
+                            <span class="text-4xl font-bold text-amber-600">$5.00</span>            
+                        </div>                                                                      
+                        <div class="swiper-slide bg-gradient-to-br from-amber-100 to-amber-500 rounded-2xl p-8 text-center">                                                                       
+                            <h3 class="text-2xl font-bold text-amber-800 mb-2">Dessert Pairing</h3> 
+                            <p class="text-gray-600 mb-4">Buy any dessert with any coffee for $2 off</p>                                                                                             
+                            <span class="text-4xl font-bold text-amber-600">$6.50</span>            
+                        </div>                                                                      
+                        <div class="swiper-slide bg-gradient-to-br from-amber-100 to-amber-500 rounded-2xl p-8 text-center">                                                                       
+                            <h3 class="text-2xl font-bold text-amber-800 mb-2">Happy Hour</h3>      
+                            <p class="text-gray-600 mb-4">2-4 PM – 20% off all drinks</p>           
+                            <span class="text-4xl font-bold text-amber-600">$5.00</span>            
+                        </div>                                                                      
+                    </div>                                                                          
+                    <div class="swiper-pagination mt-6"></div>                                      
+                    <div class="swiper-button-next"></div>                                          
+                    <div class="swiper-button-prev"></div>                                          
+                </div>                                                                              
+            </div>                                                                                  
+        </div>                                                                                      
+    </section>                                                                                      
+                                                                                                    
+    <!-- Customer Testimonials -->                                                                  
+    <section id="testimonials" class="py-20 bg-cream">                                              
+        <div class="container mx-auto px-4">                                                        
+            <div class="text-center mb-12">                                                         
+                <h2 class="section-title">What Our Customers Say</h2>                               
+                <p class="text-gray-600">Real reviews from happy guests</p>                         
+            </div>                                                                                  
+            <div class="max-w-4xl mx-auto">                                                         
+                <div class="swiper myTestimonialSwiper">                                            
+                    <div class="swiper-wrapper">                                                    
+                        <div class="swiper-slide">                                                  
+                            <div class="testimonial-card text-center">                              
+                                <div class="flex justify-center mb-4">                              
+                                    <i class="fas fa-star gold-text text-xl"></i>                   
+                                </div>                                                              
+                                <p class="text-lg italic mb-4">"Aroma has transformed my morning routine. The espresso is unmatched."</p>                                                            
+                                <div class="flex items-center justify-center gap-3">                
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="w-12 h-12 rounded-full">                                                      
+                                    <div>                                                           
+                                        <p class="font-bold">Sarah J.</p>                           
+                                        <p class="text-sm text-gray-500">Regular</p>                
+                                    </div>                                                          
+                                </div>                                                              
+                            </div>                                                                  
+                        </div>                                                                      
+                        <div class="swiper-slide">                                                  
+                            <div class="testimonial-card text-center">                              
+                                <div class="flex justify-center mb-4">                              
+                                    <i class="fas fa-star gold-text text-xl"></i>                   
+                                </div>                                                              
+                                <p class="text-lg italic mb-4">"The latte art is incredible and the ambiance is perfect."</p>                                                                           
+                                <div class="flex justify-center items-center gap-3">                
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="w-12 h-12 rounded-full">                                                      
+                                    <div>                                                           
+                                        <p class="font-bold">Mike T.</p>                            
+                                        <p class="text-sm text-gray-500">Frequent</p>               
+                                    </div>                                                          
+                                </div>                                                              
+                            </div>                                                                  
+                        </div>                                                                      
+                        <div class="swiper-slide">                                                  
+                            <div class="testimonial-card text-center">                              
+                                <div class="flex justify-center mb-4">                              
+                                    <i class="fas fa-star gold-text text-xl"></i>                   
+                                </div>                                                              
+                                <p class="text-lg italic mb-4">"Best coffee in town. Will definitely be back for a celebration."</p>                                                                     
+                                <div class="flex justify-center items-center gap-3">                
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="w-12 h-12 rounded-full">                                                      
+                                    <div>                                                           
+                                        <p class="font-bold">Emily R.</p>                           
+                                        <p class="text-sm text-gray-500">Frequent</p>               
+                                    </div>                                                          
+                                </div>                                                              
+                            </div>                                                                  
+                        </div>                                                                      
+                    </div>                                                                          
+                    <div class="swiper-pagination mt-6"></div>                                      
+                    <div class="swiper-button-next"></div>                                          
+                    <div class="swiper-button-prev"></div>                                          
+                </div>                                                                              
+            </div>                                                                                  
+        </div>                                                                                      
+    </section>                                                                                      
+                                                                                                    
+    <!-- Brewing Process -->                                                                        
+    <section id="brewing" class="py-20 bg-white">                                                   
+        <div class="container mx-auto px-4">                                                        
+            <div class="text-center mb-12">                                                         
+                <h2 class="section-title">Our Commitment</h2>                                       
+                <p class="text-gray-600">Quality in every cup</p>                                   
+            </div>                                                                                  
+            <div class="max-w-4xl mx-auto">                                                         
+                <div class="space-y-8">                                                             
+                    <div class="brew-step">                                                         
+                        <div class="step-number">1</div>                                            
+                        <div class="step-icon"><i class="fas fa-seedling"></i></div>                
+                        <div>                                                                       
+                            <h3 class="text-xl font-bold">Sourcing</h3>                             
+                            <p class="text-gray-600">We partner with family-owned farms in Colombia, Ethiopia, and Guatemala to ensure the freshest beans.</p>                                           
+                        </div>                                                                      
+                    </div>                                                                          
+                    <div class="brew-step">                                                         
+                        <div class="step-number">2</div>                                            
+                        <div class="step-icon"><i class="fas fa-leaf"></i></div>                    
+                        <div>                                                                       
+                            <h3 class="text-xl font-bold">Roasting</h3>                             
+                            <p class="text-gray-600">Our in-house roaster uses small-batch techniques to develop complex flavors and aromas.</p>                                               
+                        </div>                                                                      
+                    </div>                                                                          
+                    <div class="brew-step">                                                         
+                        <div class="step-number">3</div>                                            
+                        <div class="step-icon"><i class="fas fa-water"></i></div>                   
+                        <div>                                                                       
+                            <h3 class="text-xl font-bold">Brewing</h3>                              
+                            <p class="text-gray-600">We use precise water temperature and grind settings to extract maximum flavor.</p>                                                             
+                        </div>                                                                      
+                    </div>                                                                          
+                    <div class="brew-step">                                                         
+                        <div class="step-number">4</div>                                            
+                        <div class="step-icon"><i class="fas fa-hand-holding-heart"></i></div>      
+                        <div>                                                                       
+                            <h3 class="text-xl font-bold">Crafting</h3>                             
+                            <p class="text-gray-600">Our baristas receive ongoing training to ensure every cup meets our standards.</p>                                                                  
+                        </div>                                                                      
+                    </div>                                                                          
+                </div>                                                                              
+                <div class="mt-12 text-center">                                                     
+                    <p class="text-2xl font-bold gold-text">Quality you can taste</p>               
+                </div>                                                                              
+            </div>                                                                                  
+        </div>                                                                                      
+    </section>                                                                                      
+                                                                                                    
+    <!-- Reservation Form -->                                                                       
+    <section id="reserve" class="py-20 bg-cream">                                                   
+        <div class="container mx-auto px-4">                                                        
+            <div class="max-w-2xl mx-auto">                                                         
+                <div class="text-center mb-12">                                                     
+                    <h2 class="section-title">Reserve Your Table</h2>                               
+                    <p class="text-gray-600">We look forward to welcoming you</p>                   
+                </div>                                                                              
+                <form id="reservation-form" class="bg-white p-8 rounded-2xl shadow-lg space-y-6">   
+                    <div class="grid md:grid-cols-2 gap-6">                                         
+                        <div>                                                                       
+                            <label for="name" class="block font-bold mb-2">Full Name</label>        
+                            <input type="text" id="name" class="form-input" placeholder="John Doe" required>                                                            
+                        </div>                                                                      
+                        <div>                                                                       
+                            <label for="email" class="block font-bold mb-2">Email Address</label>   
+                            <input type="email" id="email" class="form-input" placeholder="john@example.com" required>                                                            
+                        </div>                                                                      
+                    </div>                                                                          
+                    <div class="grid md:grid-cols-2 gap-6">                                         
+                        <div>                                                                       
+                            <label for="phone" class="block font-bold mb-2">Phone Number</label>    
+                            <input type="tel" id="phone" class="form-input" placeholder="+1 (555) 123-4567" required>                                                                                 
+                        </div>                                                                      
+                        <div>                                                                       
+                            <label for="date" class="block font-bold mb-2">Date</label>             
+                            <input type="date" id="date" class="form-input" required>               
+                        </div>                                                                      
+                    </div>                                                                          
+                    <div>                                                                           
+                        <label for="time" class="block font-bold mb-2">Time</label>                 
+                        <input type="time" id="time" class="form-input" required>                   
+                    </div>                                                                          
+                    <div>                                                                           
+                        <label for="message" class="block font-bold mb-2">Special Requests</label>  
+                        <textarea id="message" rows="3" class="form-input" placeholder="Any dietary preferences or special requests..."></textarea>                                                     
+                    </div>                                                                          
+                    <button type="submit" class="btn-primary w-full text-lg py-3">Confirm Reservation</button>                                                                                
+                    <div id="form-feedback" class="text-center text-lg font-bold hidden"></div>     
+                </form>                                                                             
+            </div>                                                                                  
+        </div>                                                                                      
+    </section>                                                                                      
+                                                                                                    
+    <!-- Map Placeholder -->                                                                        
+    <section id="contact" class="py-20 bg-cream">                                                   
+        <div class="container mx-auto px-4">                                                        
+            <div class="text-center mb-12">                                                         
+                <h2 class="section-title">Find Us</h2>                                              
+                <p class="text-gray-600">We'd love to welcome you</p>                               
+            </div>                                                                                  
+            <div class="max-w-4xl mx-auto">                                                         
+                <div class="map-placeholder">                                                       
+                    <i class="fas fa-map-marked-alt fa-3x mr-4"></i>                                
+                    <span>123 Coffee Lane, New York, NY 10001</span>                                
+                </div>                                                                              
+                <div class="mt-8 grid md:grid-cols-2 gap-6">                                        
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">                                
+                        <h3 class="text-xl font-bold mb-2">Opening Hours</h3>                       
+                        <ul class="space-y-2 text-gray-600">                                        
+                            <li><i class="fas fa-clock mr-2"></i>Mon – Fri: 7:00 AM – 8:00 PM</li>  
+                            <li><i class="fas fa-clock mr-2"></i>Sat – Sun: 8:00 AM – 6:00 PM</li>  
+                            <li><i class="fas fa-clock mr-2"></i>Closed on major holidays</li>      
+                        </ul>                                                                       
+                    </div>                                                                          
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">                                
+                        <h3 class="text-xl font-bold mb-2">Contact</h3>                             
+                        <p><i class="fas fa-phone mr-2"></i>+1 (555) 123-4567</p>                   
+                        <p><i class="fas fa-envelope mr-2"></i>hello@aromacoffee.com</p>            
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>123 Coffee Lane, New York, NY</p>                                                                                              
+                    </div>                                                                          
+                </div>                                                                              
+                <div class="mt-8">                                                                  
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>                               
+                    <div class="flex space-x-6 text-3xl">                                           
+                        <a href="#" class="hover:text-gold transition"><i class="fab fa-instagram"></i></a>                                                                              
+                        <a href="#" class="hover:text-gold transition"><i class="fab fa-facebook-f"></i></a>                                                                             
+                        <a href="#" class="hover:text-gold transition"><i class="fab fa-twitter"></i></a>                                                                                
+                        <a href="#" class="hover:text-gold transition"><i class="fab fa-linkedin-in"></i></a>                                                                            
+                    </div>                                                                          
+                </div>                                                                              
+            </div>                                                                                  
+        </div>                                                                                      
+    </section>                                                                                      
+                                                                                                    
+    <!-- Footer -->                                                                                 
+    <footer class="bg-espresso text-cream py-12">                                                   
+        <div class="container mx-auto px-4">                                                        
+            <div class="grid md:grid-cols-4 gap-8">                                                 
+                <div>                                                                               
+                    <h3 class="text-2xl font-bold gold-text mb-4">Aroma Coffee</h3>                 
+                    <p class="text-gray-300 mb-4">Crafting exceptional coffee experiences for over a decade.</p>                                                                                         
+                    <div class="flex space-x-4">                                                    
+                        <a href="#" class="text-2xl hover:text-gold transition"><i class="fab fa-instagram"></i></a>                                                                              
+                        <a href="#" class="text-2xl hover:text-gold transition"><i class="fab fa-facebook-f"></i></a>                                                                             
+                        <a href="#" class="text-2xl hover:text-gold transition"><i class="fab fa-twitter"></i></a>                                                                                
+                    </div>                                                                          
+                </div>                                                                              
+                <div>                                                                               
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>                             
+                    <ul class="space-y-2 text-gray-300">                                            
+                        <li><a href="#about" class="hover:text-gold transition">About</a></li>      
+                        <li><a href="#menu" class="hover:text-gold transition">Menu</a></li>        
+                        <li><a href="#gallery" class="hover:text-gold transition">Gallery</a></li>  
+                        <li><a href="#promotions" class="hover:text-gold transition">Promotions</a></li>                                                                     
+                        <li><a href="#testimonials" class="hover:text-gold transition">Testimonials</a></li>                                                                   
+                        <li><a href="#brewing" class="hover:text-gold transition">Brewing</a></li>  
+                    </ul>                                                                           
+                </div>                                                                              
+                <div>                                                                               
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>                                 
+                    <ul class="space-y-2 text-gray-300">                                            
+                        <li><i class="fas fa-phone mr-2"></i>+1 (555) 123-4567</li>                 
+                        <li><i class="fas fa-envelope mr-2"></i>hello@aromacoffee.com</li>          
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>123 Coffee Lane, New York, NY</li>                                                                                             
+                    </ul>                                                                           
+                </div>                                                                              
+                <div>                                                                               
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>                              
+                    <p class="text-gray-300 mb-4">Subscribe for exclusive offers</p>                
+                    <form class="flex">                                                             
+                        <input type="email" placeholder="Your email" class="form-input flex-1 mr-2">
+                        <button type="submit" class="btn-primary px-4 py-2">Subscribe</button>      
+                    </form>                                                                         
+                </div>                                                                              
+            </div>                                                                                  
+            <div class="mt-12 text-center text-gray-400 text-sm">                                   
+                &copy; 2025 Aroma Coffee. All rights reserved.                                      
+            </div>                                                                                  
+        </div>                                                                                      
+    </footer>                                                                                       
+                                                                                                    
+    <!-- Scripts -->                                                                                
+    <script>                                                                                        
+        // Wait for DOM                                                                             
+        document.addEventListener('DOMContentLoaded', function() {                                  
+            // Loading screen                                                                       
+            setTimeout(() => {                                                                      
+                document.getElementById('loader').classList.add('hidden');                          
+            }, 1500);                                                                               
+                                                                                                    
+            // Smooth scrolling with Lenis                                                          
+            const lenis = new Lenis({                                                               
+                duration: 1.2,                                                                      
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),                           
+                orientation: 'vertical',                                                            
+                gestureOrientation: 'vertical',                                                     
+                smoothWheel: true,                                                                  
+            });                                                                                     
+                                                                                                    
+            function raf(time) {                                                                    
+                lenis.raf(time);                                                                    
+                requestAnimationFrame(raf);                                                         
+            }                                                                                       
+            requestAnimationFrame(raf);                                                             
+                                                                                                    
+            // GSAP ScrollTrigger                                                                   
+            gsap.registerPlugin(ScrollTrigger);                                                     
+                                                                                                    
+            // Hero animation                                                                       
+            gsap.from('.hero-title', { y: 50, opacity: 0, duration: 1, ease: 'power3.out' });       
+            gsap.from('.hero-title + p', { y: 30, opacity: 0, duration: 1, delay: 0.3, ease: 'power3.out' });                                                                                    
+            gsap.from('.hero-title + div', { y: 20, opacity: 0, duration: 1, delay: 0.6, ease: 'power3.out' });                                                                    
+                                                                                                    
+            // Navbar scroll effect                                                                 
+            const navbar = document.getElementById('navbar');                                       
+            window.addEventListener('scroll', () => {                                               
+                if (window.scrollY > 50) {                                                          
+                    navbar.classList.add('shadow-md');                                              
+                } else {                                                                            
+                    navbar.classList.remove('shadow-md');                                           
+                }                                                                                   
+            });                                                                                     
+                                                                                                    
+            // Mobile menu toggle                                                                   
+            const menuToggle = document.getElementById('menu-toggle');                              
+            const mobileMenu = document.querySelector('.md\\:flex\\.flex-col');                     
+            menuToggle.addEventListener('click', () => {                                            
+                mobileMenu.classList.toggle('hidden');                                              
+            });                                                                                     
+                                                                                                    
+            // Menu tabs                                                                            
+            const tabs = document.querySelectorAll('.menu-tab');                                    
+            const menuItems = document.querySelectorAll('.menu-item');                              
+                                                                                                    
+            tabs.forEach(tab => {                                                                   
+                tab.addEventListener('click', () => {                                               
+                    // Remove active from all tabs                                                  
+                    tabs.forEach(t => t.classList.remove('active'));                                
+                    tab.classList.add('active');                                                    
+                                                                                                    
+                    // Hide all menu items                                                          
+                    menuItems.forEach(item => item.classList.remove('active'));                     
+                                                                                                    
+                    // Show selected                                                                
+                    const category = tab.getAttribute('data-category');                             
+                    document.querySelectorAll(`.menu-item[data-category="${category}"]`).forEach(item => {                                                                                              
+                        item.classList.add('active');                                               
+                    });                                                                             
+                });                                                                                 
+            });                                                                                     
+                                                                                                    
+            // Gallery hover effect (already done via CSS)                                          
+                                                                                                    
+            // Swiper for promotions                                                                
+            new Swiper('.mySwiper', {                                                               
+                loop: true,                                                                         
+                autoplay: { delay: 5000, disableOnInteraction: false },                             
+                pagination: { el: '.swiper-pagination', clickable: true },                          
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },       
+                breakpoints: {                                                                      
+                    768: { slidesPerView: 1 },                                                      
+                    1024: { slidesPerView: 2 },                                                     
+                    1280: { slidesPerView: 3 }                                                      
+                }                                                                                   
+            });                                                                                     
+                                                                                                    
+            // Testimonial Swiper                                                                   
+            new Swiper('.myTestimonialSwiper', {                                                    
+                loop: true,                                                                         
+                autoplay: { delay: 5000, disableOnInteraction: false },                             
+                pagination: { el: '.swiper-pagination', clickable: true },                          
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },       
+                breakpoints: {                                                                      
+                    768: { slidesPerView: 1 },                                                      
+                    1024: { slidesPerView: 2 },                                                     
+                    1280: { slidesPerView: 3 }                                                      
+                }                                                                                   
+            });                                                                                     
+                                                                                                    
+            // Reservation form validation                                                          
+            const form = document.getElementById('reservation-form');                               
+            const feedback = document.getElementById('form-feedback');                              
+                                                                                                    
+            form.addEventListener('submit', function(e) {                                           
+                e.preventDefault();                                                                 
+                                                                                                    
+                // Get values                                                                       
+                const name = document.getElementById('name').value.trim();                          
+                const email = document.getElementById('email').value.trim();                        
+                const phone = document.getElementById('phone').value.trim();                        
+                const date = document.getElementById('date').value;                                 
+                const time = document.getElementById('time').value;                                 
+                const message = document.getElementById('message').value.trim();                    
+                                                                                                    
+                // Simple validation                                                                
+                if (!name || !email || !phone || !date || !time) {                                  
+                    feedback.textContent = 'Please fill in all required fields.';                   
+                    feedback.className = 'text-red-500 font-bold text-lg';                          
+                    feedback.classList.remove('hidden');                                            
+                    return;                                                                         
+                }                                                                                   
+                                                                                                    
+                if (!email.includes('@') || !email.includes('.')) {                                 
+                    feedback.textContent = 'Please enter a valid email address.';                   
+                    feedback.className = 'text-red-500 font-bold text-lg';                          
+                    feedback.classList.remove('hidden');                                            
+                    return;                                                                         
+                }                                                                                   
+                                                                                                    
+                if (!phone.match(/^\+1\d{10}$/)) {                                                  
+                    feedback.textContent = 'Please enter a valid phone number (e.g., +1 5551234567).';                                                                                      
+                    feedback.className = 'text-red-500 font-bold text-lg';                          
+                    feedback.classList.remove('hidden');                                            
+                    return;                                                                         
+                }                                                                                   
+                                                                                                    
+                // Simulate success                                                                 
+                feedback.textContent = 'Thank you! We have received your reservation. We will confirm within 24 hours.';                                                                          
+                feedback.className = 'text-green-600 font-bold text-lg';                            
+                feedback.classList.remove('hidden');                                                
+                                                                                                    
+                // Reset form after a delay                                                         
+                setTimeout(() => {                                                                  
+                    form.reset();                                                                   
+                    feedback.classList.add('hidden');                                               
+                }, 5000);                                                                           
+            });                                                                                     
+                                                                                                    
+            // Scroll-triggered animations for featured cards                                       
+            gsap.utils.toArray('.featured-card').forEach(card => {                                  
+                gsap.from(card, {                                                                   
+                    scrollTrigger: {                                                                
+                        trigger: card,                                                              
+                        start: 'top 80%',                                                           
+                        toggleActions: 'play none none none'                                        
+                    },                                                                              
+                    y: 50,                                                                          
+                    opacity: 0,                                                                     
+                    duration: 0.8,                                                                  
+                    ease: 'power3.out'                                                              
+                });                                                                                 
+            });                                                                                     
+                                                                                                    
+            // Scroll-triggered animations for sections                                             
+            gsap.utils.toArray('.section-title').forEach(title => {                                 
+                gsap.from(title, {                                                                  
+                    scrollTrigger: {                                                                
+                        trigger: title,                                                             
+                        start: 'top 85%',                                                           
+                        toggleActions: 'play none none none'                                        
+                    },                                                                              
+                    y: 30,                                                                          
+                    opacity: 0,                                                                     
+                    duration: 0.8,                                                                  
+                    ease: 'power3.out'                                                              
+                });                                                                                 
+            });                                                                                     
+                                                                                                    
+            // Scroll-triggered animations for testimonials                                         
+            gsap.utils.toArray('.testimonial-card').forEach(card => {                               
+                gsap.from(card, {                                                                   
+                    scrollTrigger: {                                                                
+                        trigger: card,                                                              
+                        start: 'top 85%',                                                           
+                        toggleActions: 'play none none none'                                        
+                    },                                                                              
+                    y: 50,                                                                          
+                    opacity: 0,                                                                     
+                    duration: 0.8,                                                                  
+                    ease: 'power3.out'                                                              
+                });                                                                                 
+            });                                                                                     
+                                                                                                    
+            // Scroll-triggered animations for brewing steps                                        
+            gsap.utils.toArray('.brew-step').forEach(step => {                                      
+                gsap.from(step, {                                                                   
+                    scrollTrigger: {                                                                
+                        trigger: step,                                                              
+                        start: 'top 85%',                                                           
+                        toggleActions: 'play none none none'                                        
+                    },                                                                              
+                    y: 30,                                                                          
+                    opacity: 0,                                                                     
+                    duration: 0.8,                                                                  
+                    ease: 'power3.out'                                                              
+                });                                                                                 
+            });                                                                                     
+                                                                                                    
+            // Progress bar animation on scroll (brewing section)                                   
+            const progressSection = document.querySelector('#brewing');                             
+            if (progressSection) {                                                                  
+                const progressFill = progressSection.querySelector('.progress-bar .fill');          
+                if (progressFill) {                                                                 
+                    ScrollTrigger.create({                                                          
+                        trigger: progressSection,                                                   
+                        start: 'top 80%',                                                           
+                        onEnter: () => {                                                            
+                            gsap.to(progressFill, { width: '100%', duration: 1.5, ease: 'power2.out' });                                                                                                 
+                        },                                                                          
+                        once: true                                                                  
+                    });                                                                             
+                }                                                                                   
+            }                                                                                       
+                                                                                                    
+            // Parallax effect on hero image (optional)                                             
+            gsap.to('.hero-overlay', {                                                              
+                scrollTrigger: {                                                                    
+                    trigger: '#hero',                                                               
+                    start: 'top top',                                                               
+                    end: 'bottom top',                                                              
+                    scrub: true                                                                     
+                },                                                                                  
+                opacity: 0.5                                                                        
+            });                                                                                     
+                                                                                                    
+            // Smooth scroll for anchor links (using Lenis)                                         
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {                           
+                anchor.addEventListener('click', function(e) {                                      
+                    e.preventDefault();                                                             
+                    const target = document.querySelector(this.getAttribute('href'));               
+                    if (target) {                                                                   
+                        lenis.scrollTo(target, { offset: -70, duration: 1.2 });                     
+                    }                                                                               
+                });                                                                                 
+            });                                                                                     
+                                                                                                    
+            // Form feedback success animation                                                      
+            const feedback = document.getElementById('form-feedback');                              
+            if (feedback) {                                                                         
+                // Already handled above                                                            
+            }                                                                                       
+                                                                                                    
+            // Additional: animate gold text on scroll                                              
+            gsap.utils.toArray('.gold-text').forEach(el => {                                        
+                gsap.from(el, {                                                                     
+                    scrollTrigger: {                                                                
+                        trigger: el,                                                                
+                        start: 'top 85%',                                                           
+                        toggleActions: 'play none none none'                                        
+                    },                                                                              
+                    color: '#8d6e63',                                                               
+                    duration: 1,                                                                    
+                    ease: 'power2.out'                                                              
+                });                                                                                 
+            });                                                                                     
+                                                                                                    
+            // Add a subtle parallax to the featured cards on scroll                                
+            gsap.utils.toArray('.featured-card').forEach(card => {                                  
+                gsap.to(card, {                                                                     
+                    scrollTrigger: {                                                                
+                        trigger: card,                                                              
+                        start: 'top bottom',                                                        
+                        end: 'bottom top',                                                          
+                        scrub: true                                                                 
+                    },                                                                              
+                    y: -10,                                                                         
+                    ease: 'none'                                                                    
+                });                                                                                 
+            });                                                                                     
+                                                                                                    
+        });                                                                                         
+    </script>                                                                                       
+</body>                                                                                             
+</html>
